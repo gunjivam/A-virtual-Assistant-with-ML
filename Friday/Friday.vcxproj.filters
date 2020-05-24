@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{bd70767d-af9d-431e-b348-9d4b2f10cb0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{80eeea60-53d5-459d-96fc-02d69c38ed6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI">
+      <UniqueIdentifier>{cdd19d39-fec2-41a0-9d95-3e7cf885692f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI\NN">
+      <UniqueIdentifier>{23183f03-1d98-446b-9fa9-d7e941d3256a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI">
+      <UniqueIdentifier>{0deb5d62-e7a6-4e02-861a-c7e04f7c9568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI\NN">
+      <UniqueIdentifier>{75f7b266-842a-4215-93ee-9332c430161b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI\Optimizer">
+      <UniqueIdentifier>{1fd9b10c-e88a-4106-bc4f-d2d3997760a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI\Optimizer">
+      <UniqueIdentifier>{615d7f73-9ccf-4896-98e1-a398cc5c228f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Friday.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FErrors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GPU.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Optmizer.cpp">
+      <Filter>Source Files\AI\Optimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Loss.cpp">
+      <Filter>Source Files\AI\Optimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="MathEx.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FErrors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GPU.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractNN.h">
+      <Filter>Header Files\AI\NN</Filter>
+    </ClInclude>
+    <ClInclude Include="Optmizer.h">
+      <Filter>Header Files\AI\Optimizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Loss.h">
+      <Filter>Header Files\AI\Optimizer</Filter>
+    </ClInclude>
+    <ClInclude Include="MathEx.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="kernels.cl">
+      <Filter>Source Files\Math</Filter>
+    </None>
+  </ItemGroup>
+</Project>
