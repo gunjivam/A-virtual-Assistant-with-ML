@@ -1,11 +1,21 @@
 #include "MathEx.h"
 
-MathEx::MathEx() {
 
+void MathEx::setLoss(std::string loss)
+{
+	gpu.CreateKernel(loss);
 }
 
+void MathEx::setTensor(std::string tensor_name, const std::vector<float>&& v)
+{
+	gpu.WriteBuffer(tensor_name, &v[0], v.size());
+}
 
-void MathEx::matmul(const std::vector<float>&& x, const std::vector<std::vector<float>>&& w, std::vector<float>&& y)
+/*
+	{ "{matmul, x, w, y}, {add, y, b, y}, {softmax, act, y}, {l1, loss, y, yhat] } 
+*/
+
+void MathEx::feedforward(std::vector<float>&& input_vect, std::string* layout)
 {
 
 }
@@ -18,18 +28,26 @@ void MathEx::loss(const std::string fname, std::vector<float>&& y, const std::ve
 {
 }
 
-void MathEx::addNN(const std::map<std::string, std::vector<float>>&& constant_tensors, 
-	const std::map<std::string, unsigned int>&& nonconstant_tensors, std::string activation, std::string loss)
+void MathEx::addNN(unsigned int id, const std::map<std::string, std::vector<float>>&& constant_tensors,
+	const std::map<std::string, unsigned int>&& nonconstant_tensors, std::string activation)
 {
 	gpu.CreateKernel(activation); 
-	gpu.CreateKernel(loss);
-	for (auto i = nonconstant_tensors.begin(); i != nonconstant_tensors.end(); i++) {
+	std::string s_id = std::to_string(id);
 
-		auto iter = tensor_keys.find(i->first);
-		if (iter == tensor_keys.end()) {
-			 
-		}
+	// x, h, c, y tensors - one tensor created if it's not the first of its type
+	if (id == 1) {
+		for (auto i = nonconstant_tensors.begin(); i != nonconstant_tensors.end(); i++)
+			gpu.CreateBuffer(i->first + s_id, i->second, CL_MEM_READ_WRITE);
 	}
-	gpu.CreateBuffer();
+	else {
+		gpu.CreateBuffer("y" + s_id, nonconstant_tensors.find("y"+s_id)->second, CL_MEM_READ_WRITE);
+	}
+	
+	// w and b tensors
+	for (auto i = constant_tensors.begin(); i != constant_tensors.end(); i++) {
+
+		gpu.CreateBuffer(i->first + s_id, i->second.size(), CL_MEM_READ_WRITE);
+		gpu.WriteBuffer(i->first + s_id, const_cast<float*>(&(i->second[0])), i->second.size());
+	}
 }
 

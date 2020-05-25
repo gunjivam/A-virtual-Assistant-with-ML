@@ -32,7 +32,6 @@ class GPU
 	
 	std::map<std::string, cl_mem> buffers;
 	std::map<std::string, cl_kernel> kernels;
-	std::map<std::string, unsigned int> tensor_keys;
 
 	std::string ParseKernel(const std::string filepath);
 
@@ -61,10 +60,8 @@ public:
 
 	cl_int ReleaseBuffer(std::string buffer);
 
-	cl_int WriteBuffer(std::string buffer, float* vec, unsigned int buffer_size);
+	cl_int WriteBuffer(std::string buffer, const float* vec, unsigned int buffer_size);
 
-	cl_int WriteBuffers(std::string* bffs, float** vecs, unsigned int* buffer_sizes, unsigned int size);
-
-	std::map<std::string, unsigned int>& getTensorKeys();
+	cl_int WriteBuffers(std::string* bffs, const float** vecs, unsigned int* buffer_sizes, unsigned int size);
 };
 

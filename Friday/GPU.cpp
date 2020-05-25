@@ -181,28 +181,18 @@ std::string GPU::ParseKernel(const std::string filepath)
 
 cl_int GPU::CreateBuffer(std::string name, unsigned int buffer_size, cl_mem_flags flag)
 {
-	auto iter = tensor_keys.find(name);
-
-	if ( iter == tensor_keys.end) {
-		buffers[name] = clCreateBuffer(context, flag, buffer_size * sizeof(float), NULL, &ret);
-		tensor_keys[name + std::to_string(iter->second + 1)] = 1;
-		CheckEx(ret);
-		return ret;
-	}
-
-	buffers[name + std::to_string(iter->second + 1)] = clCreateBuffer(context, flag, buffer_size * sizeof(float), NULL, &ret);
-	tensor_keys[name + std::to_string(iter->second + 1)] += 1;
+	buffers[name] = clCreateBuffer(context, flag, buffer_size * sizeof(float), NULL, &ret);
 	CheckEx(ret);
 	return ret;
 }
 
-cl_int GPU::WriteBuffer(std::string buffer, float* vec, unsigned int buffer_size)
+cl_int GPU::WriteBuffer(std::string buffer, const float* vec, unsigned int buffer_size)
 {
 	CheckEx(clEnqueueWriteBuffer(queue, buffers[buffer], CL_TRUE, 0, buffer_size * sizeof(float), vec, 0, NULL, NULL));
 	return ret;
 }
 
-cl_int GPU::WriteBuffers(std::string* bffs, float** vecs, unsigned int* buffer_sizes, unsigned int size)
+cl_int GPU::WriteBuffers(std::string* bffs, const float** vecs, unsigned int* buffer_sizes, unsigned int size)
 {
 	for (int i = 0; i < size; i++) {
 		ret = WriteBuffer(bffs[i], vecs[i], buffer_sizes[i]);
@@ -213,10 +203,6 @@ cl_int GPU::WriteBuffers(std::string* bffs, float** vecs, unsigned int* buffer_s
 	return ret;
 }
 
-std::map<std::string, unsigned int>& GPU::getTensorKeys()
-{
-	return tensor_keys;
-}
 
 cl_int GPU::ReadBuffer(std::string buffer, float* vec, unsigned int buffer_size)
 {
