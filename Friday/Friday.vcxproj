@@ -169,6 +169,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractNN.cpp" />
+    <ClCompile Include="CPU.cpp" />
+    <ClCompile Include="Dense.cpp" />
     <ClCompile Include="FErrors.cpp" />
     <ClCompile Include="Friday.cpp" />
     <ClCompile Include="GPU.cpp" />
@@ -178,6 +181,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractNN.h" />
+    <ClInclude Include="CPU.h" />
+    <ClInclude Include="Dense.h" />
     <ClInclude Include="FErrors.h" />
     <ClInclude Include="GPU.h" />
     <ClInclude Include="Loss.h" />

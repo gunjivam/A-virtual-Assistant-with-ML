@@ -35,11 +35,12 @@ class GPU
 
 	std::string ParseKernel(const std::string filepath);
 
-public:
 	GPU();
 
 	~GPU();
 
+
+public:
 	void ComputeMtx(std::string program, std::string v1, std::string mtx, std::string output, unsigned int nrow1, unsigned int ncol1, unsigned int ncol2);
 
 	void matrixVectorMul(std::string b1, std::string mtx, std::string output, unsigned int l_v1, unsigned int l_out);
@@ -63,5 +64,13 @@ public:
 	cl_int WriteBuffer(std::string buffer, const float* vec, unsigned int buffer_size);
 
 	cl_int WriteBuffers(std::string* bffs, const float** vecs, unsigned int* buffer_sizes, unsigned int size);
+
+	static GPU& getInstance() {
+		static GPU instance;
+		return instance;
+	}
+
+	GPU(GPU const&) = delete;
+	void operator=(GPU const&) = delete;
 };
 

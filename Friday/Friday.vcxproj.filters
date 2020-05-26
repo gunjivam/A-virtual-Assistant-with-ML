@@ -57,6 +57,15 @@
     <ClCompile Include="MathEx.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
+    <ClCompile Include="CPU.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Dense.cpp">
+      <Filter>Source Files\AI\NN</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractNN.cpp">
+      <Filter>Source Files\AI\NN</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FErrors.h">
@@ -76,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="MathEx.h">
       <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CPU.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Dense.h">
+      <Filter>Header Files\AI\NN</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
